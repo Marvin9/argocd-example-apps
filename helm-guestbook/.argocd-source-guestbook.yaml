@@ -7,7 +7,7 @@ helm:
     value: registry-1.docker.io/mayursiinh/test-image-updater
     forcestring: false
   - name: image.tag
-    value: 1.0.1
+    value: 1.0.2
     forcestring: true
   - name: image.name
     value: registry-1.docker.io/mayursiinh/test-image-updater
