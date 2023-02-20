@@ -13,5 +13,5 @@ spec:
             name: guestbook-ui
             port:
               number: 80
-        path: /base-path/(pattern1|pattern2|pattern3)(/.*)?
-        pathType: ImplementationSpecific
+        path: /foo/bar/[A-Z0-9]{3}
+        pathType: Prefix
