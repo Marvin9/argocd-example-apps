@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress-with-regex
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test.exemple.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: guestbook-ui
+            port:
+              number: 80
+        path: /base-path/(pattern1|pattern2|pattern3)(/.*)?
+        pathType: ImplementationSpecific
