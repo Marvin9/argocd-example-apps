@@ -14,23 +14,25 @@ spec:
         app: guestbook-nginx
     spec:
       readinessGates:
-      - conditionType: "httpstat.us/200"
+      - conditionType: one
+      - conditionType: two
+      - conditionType: three
       containers:
       - name: nginx
         image: nginx
         ports:
           - containerPort: 80
-        # readinessProbe:
-        #   initialDelaySeconds: 1
-        #   periodSeconds: 2
-        #   timeoutSeconds: 1
-        #   successThreshold: 1
-        #   failureThreshold: 1
-        #   httpGet:
-        #     host:
-        #     scheme: HTTP
-        #     path: /foo  
-        #     httpHeaders:
-        #       - name: Host
-        #         value: myapplication1.com
-        #     port: 80
+        readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 2
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 1
+          httpGet:
+            host:
+            scheme: HTTP
+            path: /foo  
+            httpHeaders:
+              - name: Host
+                value: myapplication1.com
+            port: 80
