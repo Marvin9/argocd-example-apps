@@ -14,7 +14,7 @@ spec:
         app: guestbook-nginx
     spec:
       readinessGates:
-      - conditionType: "https://httpstat.us/200"
+      - conditionType: "httpstat.us/200"
       containers:
       - name: nginx
         image: nginx
