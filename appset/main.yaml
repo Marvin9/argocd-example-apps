@@ -4,16 +4,24 @@ metadata:
   name: guestbook
 spec:
   generators:
-  - clusters: {}
+  - list:
+      elements:
+      - appName: 1
+        namespace: guestbook-1
+      - appName: 2
+        namespace: guestbook-2
   template:
     metadata:
-      name: '{{name}}-guestbook'
+      name: '{{appName}}-guestbook'
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/argoproj/argocd-example-apps/
+        repoURL: https://github.com/Marvin9/argocd-example-apps
         targetRevision: HEAD
         path: guestbook
       destination:
-        server: '{{server}}'
-        namespace: guestbook
+        namespace: '{{namespace}}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+
