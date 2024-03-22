@@ -1,0 +1,52 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Instance
+metadata:
+  name: crossplane-instance
+spec:
+  forProvider:
+    region: us-east-1
+    ami: ami-0a3c3a20c09d6f377
+    instanceType: t2.micro
+    keyName: crossplane-key
+    subnetId: subnet-08653b62be4f06e9d
+    associatePublicIpAddress: true
+    vpcSecurityGroupIdRefs:
+      - name: crossplane-sg
+    tags:
+      ManagedBy: Crossplane
+      Name: dev-instance
+  providerConfigRef:
+    name: default
+
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: crossplane-sg
+spec:
+  forProvider:
+    description: Allow TLS inbound traffic
+    name: allow_rules
+    region: us-east-1
+    tags:
+      Name: allow_rules
+      ManagedBy: Crossplane
+    vpcIdRef:
+      name: dev-vpc
+---
+
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: crossplane-sg
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: tcp
+    region: us-east-1
+    securityGroupIdRef:
+      name: crossplane-sg
+    toPort: 65535
+    type: ingress
