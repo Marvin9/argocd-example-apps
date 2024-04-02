@@ -1,9 +1,9 @@
 apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  generateName: crossplane-bucket-1-
-annotations:
-    argocd.argoproj.io/hook: Sync
+  name: crossplane-bucket-1
+  annotations:
+    crossplane.io/external-name: crossplane-bucket-1
 spec:
   forProvider:
     region: us-east-1
