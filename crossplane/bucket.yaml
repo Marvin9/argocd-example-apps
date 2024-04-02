@@ -2,6 +2,7 @@ apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
   generateName: crossplane-bucket-1-
+  argocd.argoproj.io/hook: Sync
 spec:
   forProvider:
     region: us-east-1
