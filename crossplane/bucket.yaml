@@ -1,7 +1,9 @@
 apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  name: crossplane-bucket-1
+  name: crossplane-temp
+  annotations:
+    crossplane.io/external-name: crossplane-temp
 spec:
   forProvider:
     region: us-east-1
