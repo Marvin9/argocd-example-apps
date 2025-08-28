@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
-  namespace: argocd2
+  namespace: argocd
 spec:
   project: default
   source:
@@ -13,7 +13,7 @@ spec:
       recurse: true
   destination:
     server: http://cluster-macbook:8001
-    namespace: argocd
+    namespace: argocd2
   syncPolicy:
     automated:
       selfHeal: true
