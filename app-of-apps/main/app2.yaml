@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Marvin9/argocd-example-apps
     targetRevision: HEAD
-    path: manifests/app1
+    path: guestbook
   destination:
     server: http://cluster-macbook:8001
     namespace: argocd
