@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd2
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Marvin9/argocd-example-apps
+    targetRevision: HEAD
+    path: app-of-apps/main
+    directory:
+      recurse: true
+  destination:
+    server: http://cluster-macbook:8001
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
