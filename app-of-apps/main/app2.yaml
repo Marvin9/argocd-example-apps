@@ -11,7 +11,7 @@ spec:
     path: guestbook
   destination:
     server: http://cluster-macbook:8001
-    namespace: argocd
+    namespace: argocd2
   syncPolicy:
     automated:
       selfHeal: true
