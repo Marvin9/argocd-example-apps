@@ -1,8 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd-2
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app1
-  namespace: argocd
+  namespace: argocd-2
 spec:
   project: default
   source:
